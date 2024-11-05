@@ -1,0 +1,131 @@
+<!-- <div class="main-div">
+    <div class="d-flex justify-content-between align-items-center main-container">
+      <h2 class="tittle mt-4 title-category" routerLink="/">Category List</h2>
+      <button class="add-button mt-3" (click)="openAddCategoryDialog()">
+        <span class="plus-sign">+</span> Add Category
+      </button>
+    </div>
+    <hr>
+    <div class="container-fluid mt-1">
+      <div class="row">
+        
+         <div class="col category-table"> 
+          <table mat-table [dataSource]="dataSource" class="table-bordered text-center">
+            <ng-container matColumnDef="SL">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> SL </th>
+              <td class="text-center" mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="categoryImage">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> Category Image </th>
+              <td class="text-center" mat-cell *matCellDef="let element"><img class="category-image" src="{{element.categoryImage}}"></td>
+            </ng-container>
+
+            <ng-container matColumnDef="CategoryName">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> Category Name </th>
+              <td class="text-center" mat-cell *matCellDef="let element">{{element.categoryName}}</td>
+            </ng-container>
+
+            
+
+            <ng-container matColumnDef="Status">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> Category Status </th>
+              <td
+                class="text-center"
+                mat-cell
+                *matCellDef="let element"
+                [ngClass]="{'active-status': element.status === 'Active', 'inactive-status': element.status === 'Inactive'}"
+              >
+                {{element.status}}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> Action </th>
+              <td class="text-center" mat-cell *matCellDef="let element">
+                <button class="btn btn-primary btn-sm me-2" (click)="onUpdate(element.categoryId)">
+                  <i class="far fa-edit"></i>
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="deleteCategory(element.categoryId,element.status)">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+        </div> 
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <ng-container matColumnDef="Status">
+              <th class="text-center" mat-header-cell *matHeaderCellDef>  Category Status </th>
+              <td class="text-center" mat-cell *matCellDef="let element">{{element.status}}</td>
+            </ng-container> -->
+
+<!-- category-list.component.html -->
+<div class="main-div">
+  <div class="d-flex justify-content-between align-items-center main-container">
+    <h2 class="title mt-4 title-category" routerLink="/">Category List</h2>
+    <button class="add-button mt-3" (click)="openAddCategoryDialog()">
+      <span class="plus-sign">+</span> Add Category
+    </button>
+  </div>
+  <hr>
+  <div class="container-fluid mt-1">
+    <div class="row">
+      <div class="col category-table">
+        <table mat-table [dataSource]="dataSource" class="table-bordered text-center">
+          <ng-container matColumnDef="SL">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> SL </th>
+            <td class="text-center" mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="categoryImage">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Category Image </th>
+            <td class="text-center" mat-cell *matCellDef="let element">
+              <img *ngIf="element.categoryImage" class="category-image" [src]="element.categoryImage" alt="{{ element.categoryName }}" />
+            </td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="categoryImage">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Category Image </th>
+            <td class="text-center" mat-cell *matCellDef="let element"><img class="category-image" src="{{element.categoryImage}}">
+            </td>
+          </ng-container> -->
+
+          <ng-container matColumnDef="CategoryName">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Category Name </th>
+            <td class="text-center" mat-cell *matCellDef="let element">{{ element.categoryName }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Status">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Category Status </th>
+            <td class="text-center" mat-cell *matCellDef="let element" [ngClass]="{'active-status': element.status === 'Active', 'inactive-status': element.status === 'Inactive'}">
+              {{ element.status }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Action">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Action </th>
+            <td class="text-center" mat-cell *matCellDef="let element">
+              <button class="btn btn-primary btn-sm me-2" (click)="onUpdate(element.categoryId)">
+                <i class="far fa-edit"></i>
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteCategory(element.categoryId, element.status)">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
+

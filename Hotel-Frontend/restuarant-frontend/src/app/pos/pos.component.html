@@ -1,0 +1,209 @@
+<div class="main-body">
+  <alert *ngFor="let alert of alerts; let i = index" [type]="alert.type" (onClosed)="closeAlert(i)">
+    {{ alert.msg }}
+  </alert>
+    <div class="container-fluid columns mt-2">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="p-3 product-col">
+                    <div class="row mb-3">
+                        <div class="col-md-6 search-container">
+                            <input type="text" class="form-control Search-bar" placeholder="Search" (input)="onSearchChange($event)">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select Category" aria-label="Category select" (change)="onCategoryChange($event)">
+                                <option>All</option>
+                                <option *ngFor="let category of categories" [value]="category.categoryName">
+                                    {{ category.categoryName }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row product-row" >
+                      <div *ngIf="categoryProducts.length === 0" class="empty-products">
+                        <img src="https://img.freepik.com/free-vector/hand-drawn-no-data-concept_52683-127829.jpg?t=st=1728451763~exp=1728455363~hmac=b2849ddf183ebc0e0627fe7fb20292601c51015e3d0ae3235567dfaae472d15b&w=740" style="height: 325px;" alt="No Products" class="empty-image">
+                        <p class="empty-message">No products available in this category.</p>
+                    </div>
+                        <div class="product-card " *ngFor="let product of categoryProducts"
+                        (click)="getProductById(product.productId)">
+                            <img  src="{{product.productImage}}" alt="Product Image">
+                            <p class="product-name"><strong>{{ product.productName }}</strong></p>
+                            <p class="product-prize"><strong>{{ product.productPrice | currency:'INR':'symbol-narrow' }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 order-container">
+
+                <!-- <div class="customer-selection-container">
+                    <div class="customer-selection-box">
+                      <i class="fas fa-user customer-icon"></i>
+                      <input type="text" placeholder="Select A Customer" class="customer-input">
+                    </div>
+                    <button class="customer-button">
+                      <i class="fas fa-user-friends customer-button-icon"></i>
+                    </button>
+                  </div> -->
+
+                  <!-- <div class="customer-selection-container">
+                    <div class="customer-selection-box">
+                      <i class="fas fa-user customer-icon"></i>
+                      <input 
+                        type="text" 
+                        placeholder="Select A Customer" 
+                        class="customer-input" 
+                        [(ngModel)]="searchCustomer" 
+                        (input)="filterCustomers()"
+                        (blur)="resetSearch()"
+                      >
+                    </div>
+                    <button class="customer-button" (click)="selectCustomer()">
+                      <i class="fas fa-user-friends customer-button-icon"></i>
+                    </button>
+                  </div> -->
+
+                  <div class="customer-div">
+                    <div class="customer-selection-container">
+                      <div class="customer-selection-box">
+                        <i class="fas fa-user customer-icon"></i>
+                        <input 
+                          type="text" 
+                          placeholder="Select A Customer" 
+                          class="customer-input" 
+                          [(ngModel)]="searchCustomer" 
+                          (input)="filterCustomers()"
+                        >
+                        <div class="customer-btn">
+                          <button class="customer-button" (click)="openAddCustomerDialog()">
+                            <i class="fas fa-user-plus customer-button-icon"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <!-- Dropdown for filtered customers -->
+                      <div class="dropdown" *ngIf="filteredCustomers.length > 0">
+                        <div 
+                          class="dropdown-item" 
+                          *ngFor="let customer of filteredCustomers" 
+                          (click)="selectCustomer(customer)"
+                        >
+                          {{ customer.customerFullName }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                <!-- <div class="order-header">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Walk-in Customer">
+                    </div>
+                    <button id="addCustomerBtn" type="button" class="btn btn-success" data-toggle="modal" data-target="#customerModal">Add</button>
+                </div> -->
+                <!-- <div class="order-header">
+
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="options" id="dinning" autocomplete="off" checked> Dinning
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="takeaway" autocomplete="off"> Takeaway
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="delivery" autocomplete="off"> Delivery
+                        </label>
+                    </div>
+                    <div class="form-group ml-3">
+                        <select class="form-control">
+                            <option>Choose Table</option>
+                        </select>
+                    </div>
+                </div> -->
+               
+                <div class="table-container">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th class="">Sl</th>
+                          <!-- <th>Image</th> -->
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th>Qty</th>
+                          <th>Total</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead> 
+                      <tbody>
+                        <tr *ngFor="let item of cartProducts;  index as i">
+                          <td>{{i+1}}</td>
+                          <!-- <td><img class="product-image" src="{{item.productImage}}" alt="Product Image"></td> -->
+                          <td>{{item.productName}}</td>
+                          <td>{{item.productPrice | currency:'INR'}}</td>
+                          <td>
+                            <div class="quantity-container">
+                                <button (click)="decreaseQuantity(i)" class="btn btn-danger quantity-btn">-</button>
+                                <input type="text" class="form-control quantity-input text-center" [(ngModel)]="item.productQuantity" readonly>
+                                <button (click)="increaseQuantity(i)" class="btn btn-success quantity-btn">+</button>
+                            </div>
+                        </td>
+                            <td>{{item.productTotal| currency:'INR':'symbol-narrow'}}</td>
+                              <td class="delete-btn"><i class="fas fa-trash-alt" (click)="removeFromCart(i)"></i></td>
+                            </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="footer-row">
+                    <div class="row footer-row2">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="subTotal" class="form-label formfooter" >Sub Total :</label>
+                                    <p id="subTotal" style="color: blue;">{{ subtotal | currency: 'INR':'symbol':'1.2-2':'en-IN' }}</p>
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="discount" class="form-label formfooter">Discount :</label>
+                                  <select class="form-select" id="discount" [(ngModel)]="selectedDiscount" (change)="applyDiscount()">
+                                      <option value="0">No Discount</option>
+                                      <option value="10">10% off</option>
+                                      <option value="20">20% off</option>
+                                      <option value="30">30% off</option>
+                                      <option value="40">40% off</option>
+                                      <option value="50">50% off</option>
+                                  </select>
+                              </div>
+                                <!-- <div class="col-md-2">
+                                    <label for="paidAmount" class="form-label formfooter">Paid Amount :</label>
+                                    <input type="number" class="form-control" id="paidAmount" value="0">
+                                </div> -->
+                                <div class="col-md-2">
+                                    <label for="paymentType" class="form-label formfooter">Payment Type :</label>
+                                    <select class="form-select" id="paymentType" [(ngModel)]="selectedPaymentType">
+                                        <option value="Cash">Cash</option>
+                                        <option value="Card">Card</option>
+                                        <option value="Online">Online</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 botom-bar">
+                            <div class="row button-container">
+                                <div class="col bill-total">
+                                    <label for="billTotal" class="form-label formfooter">Bill Total</label>
+                                    <p id="billTotal" style="color: green;">{{netTotal | currency: 'INR':'symbol':'1.2-2':'en-IN'}}</p>
+                                </div>
+                                <div class="col buttons">
+                                    <button type="button" class="btn btn-danger button-size" (click)="clearCart()">Clear</button>
+                                    <button type="button" class="btn btn-success button-size" (click)="postCart()">Place Order</button>
+                                    <button type="button" class="btn btn-primary button-size" (click)="createTransaction()">payment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

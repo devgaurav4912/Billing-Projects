@@ -1,0 +1,61 @@
+<div class="main-body">
+  <div class="container form-container">
+    <h1 class="heading text-center">Master Settings</h1>
+    <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()" id="settingsForm">
+      
+      <mat-form-field  appearance="fill" style="width: 480px;">
+        <mat-label>Business Name</mat-label>
+        <input matInput type="text" formControlName="businessName" placeholder="Enter Business Name">
+        <mat-error *ngIf="settingsForm.get('businessName')?.invalid && settingsForm.get('businessName')?.touched">
+          Business Name is required.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="add-category-form" appearance="fill" style="width: 480px;" >
+        <mat-label>Business Mobile</mat-label>
+        <input matInput type="text" formControlName="businessMobile" placeholder="Enter Business Mobile">
+        <mat-error *ngIf="settingsForm.get('businessMobile')?.invalid && settingsForm.get('businessMobile')?.touched">
+          Valid Business Mobile number is required.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="add-category-form" appearance="fill" style="width: 480px;">
+        <mat-label>Business Email</mat-label>
+        <input matInput type="email" formControlName="businessEmail" placeholder="Enter Business Email">
+        <mat-error *ngIf="settingsForm.get('businessEmail')?.invalid && (settingsForm.get('businessEmail')?.dirty || settingsForm.get('businessEmail')?.touched)">
+          <div *ngIf="settingsForm.get('businessEmail')?.hasError('required')">Business Email is required.</div>
+          <div *ngIf="settingsForm.get('businessEmail')?.hasError('email')">Please provide a valid email address.</div>
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="add-category-form" appearance="fill" style="width: 480px;">
+        <mat-label>Business Address</mat-label>
+        <input matInput type="text" formControlName="businessAddress" placeholder="Enter Business Address">
+        <mat-error *ngIf="settingsForm.get('businessAddress')?.invalid && settingsForm.get('businessAddress')?.touched">
+          Business Address is required.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="add-category-form" appearance="fill" style="width: 480px;">
+        <mat-label>Business GST Number</mat-label>
+        <input matInput type="text" formControlName="businessGstNumber" placeholder="Enter Business GST Number">
+        <mat-error *ngIf="settingsForm.get('businessGstNumber')?.invalid && settingsForm.get('businessGstNumber')?.touched">
+          Business GST Number is required.
+        </mat-error>
+      </mat-form-field>
+      
+      <div class="form-group file-input-group">
+        <label for="businessLogo">Choose Logo</label>
+        <input type="file" class="form-control-file" id="businessLogo" accept="image/*" (change)="onFileChange($event)">
+        <img [src]="logoPreview || data?.businessLogo" id="logoPreview" class="logo-img" *ngIf="logoPreview || data?.businessLogo" alt="Business Logo">
+      </div>
+      <div class="text-center mt-3">
+        <button type="submit" class="update-button" style="width: 200px;">Update</button>
+      </div>
+    </form>
+    
+    <div *ngIf="isLoading" class="loader-container">
+      <mat-spinner mode="indeterminate"></mat-spinner>
+    </div>
+  </div>
+</div>

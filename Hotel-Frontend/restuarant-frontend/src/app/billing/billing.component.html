@@ -1,0 +1,136 @@
+<div class="main-div text-center"  id="print-section">
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="5">
+                    <!-- <table>
+                        <tr>
+                            <td>
+                                <img src="https://res.cloudinary.com/dh8v09eaj/image/upload/v1723351924/logo.png" style="width: 100%; max-width: 100px;">
+                                <br>
+                                TasteHeaven<br>
+                                Mobile: 4567832190, Email: testheaven.com
+                            </td>
+                        </tr>
+                    </table> -->
+                    <div class="text-center">
+                        <img src="https://res.cloudinary.com/dh8v09eaj/image/upload/v1723351924/logo.png" style="width: 100%; max-width: 50px;">
+                        <br>
+                        TasteHeaven<br>
+                        Mobile: 4567832190, Email: testheaven.com
+                    </div>
+                </td>
+            </tr>
+            <tr class="information">
+                <td colspan="5">
+                    <table>
+                        <tr>
+                            <td>
+                                Invoice ID: {{printData?.orderNumber}}<br>
+                                <!-- VAT-Reg: 654321<br> -->
+                                Date:{{ printData?.createdOn | date:'dd-MM-yyyy hh:mm a' }}<br>
+                                Customer Name:{{printData?.customerName}}<br>
+                                Phone: 017000000000<br>
+                                Address: address<br>
+                                <!-- GTIN: 147258 -->
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="heading">INVOICE</td>
+            </tr>
+            <tr class="heading">
+                <td>SL</td>
+                <td class="item-name">Name</td>
+                <td>Qty</td>
+                <td>Price</td>
+                <td>Amount</td>
+            </tr>
+            <tr class="item" class="item" *ngFor="let product of printData?.products || []; let i = index">
+                <td>{{i+1}}</td>
+                <td class="item-name">{{product.productName}}</td>
+                <td>{{product.productQuantity}}</td>
+                <td>{{product.productPrice| currency: 'INR':'symbol':'1.2-2':'en-IN'}}</td>
+                <td>{{product.productTotal | currency:'INR':'symbol-narrow'}}</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Total Amt:</td>
+                <td class="right">{{printData?.subTotal | currency: 'INR':'symbol':'1.2-2':'en-IN'}}</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Order Tax:</td>
+                <td class="right">0.00</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Discount:</td>
+                <td class="right">{{printData?.discountAmount | currency: 'INR':'symbol':'1.2-2':'en-IN'}}</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Shipping Chrg:</td>
+                <td class="right">0.00</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Others Chrg:</td>
+                <td class="right">0.00</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Previous Due:</td>
+                <td class="right">0.00</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Total Due:</td>
+                <td class="right">00</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Amount Paid:</td>
+                <td class="right">{{printData?.netBill | currency: 'INR':'symbol':'1.2-2':'en-IN' }}</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Prev. Due Paid:</td>
+                <td class="right">0.00</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Change:</td>
+                <td class="right">0.00</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="right bold">Due:</td>
+                <td class="right">0.00</td>
+            </tr>
+            <tr class="no-border">
+                <td colspan="5" class="bold">In Text: {{ printData.netBill | numberToWords }}</td>
+            </tr>
+            <tr class="heading">
+                <td colspan="5">Payments</td>
+            </tr>
+            <tr class="heading">
+                <td>SL</td>
+                <td class="payment-method">Payment Method</td>
+                <td>Amount</td>
+                <td>Balance</td>
+            </tr>
+            <tr class="item last">
+                <td>1</td>
+                <td class="payment-method">Cash on Delivery by Salesman<br>on 28 Jul 2024 12:20 AM</td>
+                <td>{{printData?.netBill | currency: 'INR':'symbol':'1.2-2':'en-IN'}}</td>
+                <td>0.00</td>
+            </tr>
+            <!-- <tr class="no-border">
+                <td colspan="5" class="center bold small">
+                    <img src="data:image/png;base64,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" style="width: 100%; height:100px;">
+                    Sold product No Claim. No Change, New product One Month Warranty.<br>
+                    Thank you for choosing us!
+                </td>
+            </tr> -->
+        </table>
+    </div>
+    <!-- <button (click)="printInvoice()" class="btn btn-primary text-center">Print Invoice</button> -->
+</div>
+
+<!-- <<button printSectionId="print-section" ngxPrint class="btn btn-primary text-center">Print Invoice</button> -->
+<button (click)="printInvoice()">Print</button>
+
+

@@ -1,0 +1,76 @@
+===IMAGE API===
+http://localhost:8090/cloudinary/upload
+
+===LOGIN API===
+http://localhost:8090/api/user
+
+===CATEGORY-MASTER API===
+post category
+http://localhost:8090/api/category/create-category
+
+update category
+http://localhost:8090/api/category/updateCategory/{id}
+
+getAllCategory
+http://localhost:8090/api/category/getAllCategory
+
+getCategoryById
+http://localhost:8090/api/category/{categoryId}
+
+deleteCategory
+http://localhost:8090/api/category/delete/{id}
+
+
+==PRODUCT-MASTER APIS===
+post product
+http://localhost:8090/api/product/add-product/{categoryName}
+
+update product
+http://localhost:8090/api/product/updateProduct/{categoryName}
+
+get all products
+http://localhost:8090/api/product/getAllProducts
+
+get product by category name
+http://localhost:8090/api/product/category/{categoryName}
+
+delete product
+http://localhost:8090/api/product/delete/{id}
+
+
+==USER-MASTER API===
+post api
+http://localhost:8090/api/customer/addCustomer
+
+update api
+http://localhost:8090/api/customer/update
+
+getById
+http://localhost:8090/api/customer/{customerId}
+
+getAll
+http://localhost:8090/api/customer/getAllCustomer
+
+
+===CART-MASTER APIS===
+post product
+http://localhost:8090/api/cartmaster/add-cart/{customerName}
+
+getAllCart
+http://localhost:8090/api/cartmaster/getAllCarts
+
+delete cart
+http://localhost:8090/api/cartmaster/delete/cart-product/{cartId}
+
+
+===SETTING-MASTER APIS===
+post
+http://localhost:8090/api/settings
+update
+getAll
+getById
+Delete
+
+
+
+

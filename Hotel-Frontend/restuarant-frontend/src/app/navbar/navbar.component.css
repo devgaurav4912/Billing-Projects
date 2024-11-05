@@ -1,0 +1,79 @@
+.dancing-script {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 100;
+    font-style: normal;
+  }
+.navbar-custom {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgb(102, 18, 130) 0%, rgb(154, 37, 165) 39%, rgb(102,18,130) 100%);
+    height: 55px;
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: white;
+    margin-top: 2px;
+}
+.navbar-custom .nav-link:hover {
+    color: #ddd;
+}
+.nav-img {
+    height: 30px;
+    border-radius: 999px;
+padding: 1px;
+background-color: white;
+
+
+}   
+
+
+/* Define keyframes for the click animation */
+@keyframes clickAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Apply animation to navbar items on click */
+.navbar-nav .nav-item.active .nav-link {
+    animation: clickAnimation 0.3s ease;
+}
+
+/* Optional: Define a transition effect for a smoother appearance */
+.navbar-nav .nav-link {
+    transition: color 0.3s ease;
+}
+
+/* Base styling for nav links */
+.navbar-nav .nav-link {
+    position: relative;
+    padding-bottom: 5px; /* Space for the underline */
+    transition: color 0.3s ease;
+}
+
+/* Underline styling */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+/* Active state for the underline */
+.navbar-nav .nav-item.active .nav-link::after {
+    width: 100%;
+}
+
+/* Optionally, define a hover effect for the underline */
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}

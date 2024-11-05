@@ -1,0 +1,51 @@
+/* add-customer-form.component.css */
+
+h2 {
+    text-align: center;
+    color: #4A148C;
+    margin-bottom: 20px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  
+  button[mat-dialog-close] {
+    margin-left: 10px;
+    background-color: #e0e0e0;
+    color: #000;
+  }
+  
+  button[type="submit"] {
+    background-color: #641794;
+    color: #fff;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #a5a5a5; /* Disabled button color */
+  }
+  
+  .dialog-container {
+    padding: 20px;
+    border-radius: 50px;
+  }
+  
+  @media (max-width: 400px) {
+    .dialog-container {
+      padding: 10px;
+    }
+  
+    h2 {
+      font-size: 18px;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  }
+  

@@ -1,0 +1,26 @@
+.mat-dialog-container {
+    width: 60px;
+    padding: 20px;
+  }
+  
+  .mat-dialog-title {
+    margin-bottom: 20px;
+    margin-left:50px ;
+  }
+  
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: start;
+     margin-left: 500px;
+  }
+
+  .mat-mdc-dialog-container {
+    position: static;
+    display: block;
+    margin-left: 100px;
+}
+
+.warning-message {
+  color: red;
+  font-weight: bold;
+}

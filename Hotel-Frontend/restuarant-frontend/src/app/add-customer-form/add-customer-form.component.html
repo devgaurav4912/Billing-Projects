@@ -1,0 +1,50 @@
+<!-- add-customer-form.component.html -->
+<!-- add-customer-form.component.html -->
+<alert *ngFor="let alert of alerts; let i = index" [type]="alert.type" (onClosed)="closeAlert(i)">
+  {{ alert.msg }}
+</alert>
+<div class="dialog-container">
+  
+    <h2>Add New Customer</h2>
+    <form [formGroup]="addCustomerForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Name</mat-label>
+        <input matInput formControlName="customerFullName" required>
+      </mat-form-field>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Enter Mobile Number</mat-label>
+        <input matInput formControlName="customerMobileNumber" type="number" min="0" required>
+      </mat-form-field> -->
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Mobile Number</mat-label>
+        <input 
+          matInput 
+          formControlName="customerMobileNumber" 
+          type="text" 
+          maxlength="10" 
+          minlength="10" 
+          required 
+          pattern="[0-9]*">
+        <mat-error *ngIf="addCustomerForm.get('customerMobileNumber')?.hasError('required')">
+          Mobile number is required.
+        </mat-error>
+        <mat-error *ngIf="addCustomerForm.get('customerMobileNumber')?.hasError('minlength')">
+          Mobile number must be exactly 10 digits.
+        </mat-error>
+        <mat-error *ngIf="addCustomerForm.get('customerMobileNumber')?.hasError('maxlength')">
+          Mobile number must be exactly 10 digits.
+        </mat-error>
+        <mat-error *ngIf="addCustomerForm.get('customerMobileNumber')?.hasError('pattern')">
+          Mobile number must be numeric.
+        </mat-error>
+      </mat-form-field>
+      
+      
+      <div class="button-group">
+        <button mat-button type="submit" [disabled]="addCustomerForm.invalid">Save</button>
+        <button mat-button mat-dialog-close>Cancel</button>
+      </div>
+    </form>
+  </div>
+  

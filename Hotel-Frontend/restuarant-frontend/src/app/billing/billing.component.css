@@ -1,0 +1,110 @@
+.main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    width: 54mm;
+    height: 100vh; /* Full height of the viewport */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.invoice-box {
+    width: 100%;
+    max-width: 54mm;
+    padding: 0px;
+    border: 1px solid #eee;
+    font-size: 8px;
+    line-height: 1.2;
+    color: #555;
+}
+
+.invoice-box table {
+    width: 100%;
+    line-height: inherit;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.invoice-box table td {
+    padding: 2px;
+    vertical-align: top;
+}
+
+.invoice-box table tr.top table td {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.invoice-box table tr.top table td.title {
+    font-size: 20px;
+    line-height: 20px;
+    color: #333;
+}
+
+.invoice-box table tr.information table td {
+    padding-bottom: 20px;
+}
+
+.invoice-box table tr.heading td {
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    font-size: 9px;
+}
+
+.invoice-box table tr.details td {
+    padding-bottom: 10px;
+}
+
+.invoice-box table tr.item td {
+    border-bottom: 1px solid #eee;
+}
+
+.invoice-box table tr.item.last td {
+    border-bottom: none;
+}
+
+.invoice-box table tr.total td:nth-child(2) {
+    border-top: 2px solid #eee;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.small {
+    font-size: 8px;
+}
+
+.payment-method {
+    padding-right: 5px;
+}
+
+.item-name {
+    padding-right: 5px;
+}
+
+@media print {
+    button {
+        display: none;
+    }
+
+    .invoice-box {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .invoice-box table tr.top table td img {
+        margin: 0 auto;
+        display: block;
+    }
+}

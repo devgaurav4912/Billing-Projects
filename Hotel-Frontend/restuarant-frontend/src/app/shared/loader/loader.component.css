@@ -1,0 +1,111 @@
+/* .loader-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 2000;
+  }
+  
+  .food-loader {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    animation: rotate 3s linear infinite;
+  }
+  
+  .plate {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #e0e0f8;
+    border: 6px solid #800080;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .fork {
+    width: 6px;
+    height: 50px;
+    background-color: #800080;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    transform-origin: bottom;
+    animation: fork-move 1s ease-in-out infinite;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes fork-move {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-30deg);
+    }
+  }
+  
+   */
+
+   .loader-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 2000;
+  }
+  
+  .loader {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    border: 4px solid #0000;
+    border-radius: 50%;
+    border-color: #d0aaff #0000; /* Adjusted for purple theme */
+    animation: l16 1s infinite linear;
+  }
+  
+  .loader::before,
+  .loader::after {    
+    content: "";
+    grid-area: 1/1;
+    margin: 2px;
+    border: inherit;
+    border-radius: 50%;
+  }
+  
+  .loader::before {
+    border-color: #a86cba #0000; /* Adjusted for a shade of purple */
+    animation: inherit; 
+    animation-duration: .5s;
+    animation-direction: reverse;
+  }
+  
+  .loader::after {
+    margin: 8px;
+    border-color: #d0aaff #0000; /* Adjusted for purple theme */
+  }
+  
+  @keyframes l16 { 
+    100% { transform: rotate(1turn) }
+  }
+  

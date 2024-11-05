@@ -1,0 +1,11 @@
+.main-div{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.echart {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 10px;
+  }

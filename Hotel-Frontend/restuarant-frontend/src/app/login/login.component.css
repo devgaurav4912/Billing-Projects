@@ -1,0 +1,122 @@
+/* .main-body {
+    background: url("https://res.cloudinary.com/dh8v09eaj/image/upload/v1722239052/biuwr7yssk0i8jkq1ana.jpg") no-repeat center center fixed ;
+    background-size: cover;
+} */
+
+.main-body{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+.main-body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("https://res.cloudinary.com/dh8v09eaj/image/upload/v1722239052/biuwr7yssk0i8jkq1ana.jpg") no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(3px);
+    z-index: -1;
+}
+.login-container {
+    margin-top: 6.5%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255);
+    border-radius: 20px;
+}
+.logo {
+   height: 40px;
+   text-align: center;
+}
+.powered-by {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #888;
+}
+.name{
+    font-size: 30px;
+    font-weight: bold;
+    color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    
+}
+
+
+.btn{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgb(102, 18, 130) 0%, rgb(154, 37, 165) 39%, rgb(102,18,130) 100%);
+                color: white;
+                border-radius: 5px;
+}
+.btn:hover{
+    color: white;
+}
+.img-logo{
+    height: 55px;
+    color: blueviolet;
+
+}
+
+.name-1{
+    color: rgb(188, 118, 169);
+}
+
+.name-2{
+    color: rgb(158, 42, 127);
+    color: linear-gradient(90deg, rgb(71, 25, 91) 0%, rgba(89,9,121,1) 39%, rgb(22, 0, 36) 100%);
+                
+}
+.form-control{
+    border-radius: 5px;
+}
+.rem-me{
+    background-color: #eae7ec;
+}
+.rem-me:focus{
+    border-color: #b55add; /* Change this to your desired color */
+    box-shadow: 0 0 5px #b55add; /* Optional: Add a shadow effect */
+    outline: none; /* Remove default outline */
+    background-color: #b55add;
+}
+/* .form-control:focus{
+    border-color: #b55add; 
+    box-shadow: 0 0 5px #b55add; 
+    outline: none; 
+} */
+.log-con{
+color: #888;
+}
+
+.position-relative {
+    position: relative;
+  }
+  
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .form-control {
+    padding-right: 35px; /* Ensure space for the eye icon */
+  }
+  
+  .text-danger {
+    margin-top: 5px; /* Adjust margin to give space for the error message */
+  }
+  
+
+

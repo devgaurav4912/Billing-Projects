@@ -1,0 +1,59 @@
+<div class="main-div">
+    <body>
+    
+        <!-- Main Content -->
+        <div class="container mt-4">
+            <!-- Card Boxes -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card text-white bg-secondary mb-3">
+                        <div class="card-header"><i class="fa-solid fa-layer-group"></i> Category's</div>
+                        <div class="card-body" routerLink="/category-list">
+                            <h5 class="card-title">Total Category</h5>
+                            <p class="card-text">{{Categorycount}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-header"><i class="fas fa-box"></i> Products</div>
+                        <div class="card-body" routerLink="/product">
+                            <h5 class="card-title">Total Products</h5>
+                            <p class="card-text">{{productCount}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-warning mb-3">
+                        <div class="card-header"><i class="fas fa-users"></i> Customers</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Total Customers</h5>
+                            <p class="card-text">{{customerCount}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-success mb-3">
+                        <div class="card-header"><i class="fas fa-shopping-cart"></i> Orders</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Total Orders</h5>
+                            <p class="card-text">{{placeOrderCount}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <hr>
+            <!-- Charts -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div echarts [options]="pieChartOptions" class="echart"></div>
+                </div>
+                <!-- <div class="col-md-6">
+                    <canvas id="lineChart"></canvas>
+                </div> -->
+            </div>
+        </div>
+    
+        
+    </body>
+</div>

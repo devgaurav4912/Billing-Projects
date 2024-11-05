@@ -1,0 +1,71 @@
+<div class="main-body">
+    <div class="container">
+      <div class="row"></div>
+      <div class="row justify-content-center">
+        <div class="login-container login-form p-5">
+          <div class="mb-1">
+            <div class="row">
+              <div class="name">
+                <img class="img-logo me-2" src="https://res.cloudinary.com/dh8v09eaj/image/upload/v1723351924/logo.png" alt="">
+                <div class="name-1"><span>Taste</span><span class="name-2">Heaven</span></div>
+              </div>
+            </div>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+            <div class="mb-3 ms-1 mt-4">
+              <label class="mt-2 log-con">Login To Continue</label>
+            </div>
+            <div class="mb-4">
+              <!-- <label class="form-label">User Name -</label> -->
+              <input type="text" class="form-control" id="email" formControlName="userName" placeholder="Enter UserName" required>
+              <div *ngIf="loginForm.get('userName')?.invalid && (loginForm.get('userName')?.dirty || loginForm.get('userName')?.touched)">
+                <div *ngIf="loginForm.get('userName')?.errors?.['required']" class="text-danger">
+                  User Name required.
+                </div>
+                <div *ngIf="loginForm.get('userName')?.errors?.['minlength']" class="text-danger">
+                  User Name must be at least 3 characters long.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="position-relative">
+                <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" formControlName="password" placeholder="Password" required>
+                <i class="fa eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePasswordVisibility()"></i>
+              </div>
+              <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                <div *ngIf="loginForm.get('password')?.errors?.['required']" class="text-danger">
+                  Password is required.
+                </div>
+                <div *ngIf="loginForm.get('password')?.errors?.['minlength']" class="text-danger">
+                  Password must be at least 3 characters long.
+                </div>
+              </div>
+            </div>
+            
+            
+            <!-- <div class="mb-4 position-relative">
+              <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" formControlName="password" placeholder="Password" required>
+              <i class="fa eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePasswordVisibility()" 
+                 style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+              <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                <div *ngIf="loginForm.get('password')?.errors?.['required']" class="text-danger">
+                  Password is required.
+                </div>
+                <div *ngIf="loginForm.get('password')?.errors?.['minlength']" class="text-danger">
+                  Password must be at least 3 characters long.
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="mb-4 form-check">
+              <input type="checkbox" class="form-check-input rem-me" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div> -->
+            <button type="submit" class="btn w-100" >Login</button>
+          </form>
+          <div class="powered-by pt-1">----------- Powered by <strong>TasteHaven</strong> -----------</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
